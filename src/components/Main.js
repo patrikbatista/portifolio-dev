@@ -237,7 +237,10 @@ function Main() {
           itemClass="carousel-item-padding-40-px"
         >
           {projects.map((project, index) => (
-            <div key={ index } style={ { height: '300px' } }>
+            <div
+              key={ index }
+              style={ { height: '300px' } }
+            >
               <img
                 src={ project.image }
                 style={ {
