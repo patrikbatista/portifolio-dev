@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Box,
   Typography,
+  Tooltip,
   // Link,
   // SvgIcon
 } from '@mui/material';
@@ -81,25 +82,33 @@ function About() {
               width: '100%',
             } }
           >
-            {icons.map((icon, index) => (
+            {icons.map(([icon, description], index) => (
               <Box
                 key={ index }
                 sx={ {
                   padding: '5px',
                   width: '50px',
                   height: '50px',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignContent: 'center',
                 } }
               >
-                <img
-                  style={ {
-                    objectFit: 'contain',
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                  } }
-                  src={ icon }
-                  alt="tecnologia"
-                  loading="lazy"
-                />
+                <Tooltip title={ description }>
+                  <img
+                    style={ {
+                      objectFit: 'contain',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                    } }
+                    src={ icon }
+                    alt="tecnologia"
+                    loading="lazy"
+                  />
+                </Tooltip>
               </Box>
             ))}
           </Box>
