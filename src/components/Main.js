@@ -8,15 +8,13 @@ import developerPhoto from '../images/fotoPatrik.jpeg';
 import icons from '../icons/index';
 import projects from '../projects';
 
-import 'react-multi-carousel/lib/styles.css';
-
 require('@lottiefiles/lottie-player');
 // import computerPhoto from '../images/computerPhoto.jpeg';
 function Main() {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: 1,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
@@ -219,77 +217,41 @@ function Main() {
           </Typography>
 
         </Box>
-        <Box>
-          <Carousel
-            swipeable={ false }
-            draggable={ false }
-            showDots
-            responsive={ responsive }
-            ssr // means to render carousel on server-side.
-            infinite
-            autoPlay
-            autoPlaySpeed={ 1000 }
-            keyBoardControl
-            customTransition="all .5"
-            transitionDuration={ 500 }
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={ ['tablet', 'mobile'] }
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-          >
-            {projects.map((project, index) => (
-              // <div
-              // key={ index }
-              //   style={ {
-              //     width: '100%',
-              //     height: '500px',
-              //   } }
-              // >
-              //   <div
-              //     style={ {
-              //       width: '200px',
-              //       height: '200px',
-              //     } }
-              //   >
+      </Box>
+      <div>
+        <Carousel
+          swipeable
+          draggable
+          showDots
+          responsive={ responsive }
+          ssr // means to render carousel on server-side.
+          infinite
+          // autoPlay
+          // autoPlaySpeed={ 1000 }
+          keyBoardControl
+          customTransition="all .5"
+          transitionDuration={ 500 }
+          containerClass="carousel-container"
+          removeArrowOnDeviceType={ ['tablet', 'mobile'] }
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+        >
+          {projects.map((project, index) => (
+            <div key={ index } style={ { height: '300px' } }>
               <img
-                key={ index }
                 src={ project.image }
                 style={ {
                   objectFit: 'contain',
-                  maxWidth: '50%',
-                  maxHeight: '50%',
+                  maxWidth: '100%',
+                  maxHeight: '100%',
                 } }
                 alt={ project.name }
               />
-              //   </div>
-              //   <Typography variant="h3" gutterBottom component="div">
-              //     {project.name}
-              //   </Typography>
-              //   <Typography variant="h6" gutterBottom component="div">
-              //     {project.description}
-              //   </Typography>
-              //   <Link
-              //     href={ project.url }
-              //     target="_blank"
-              //     rel="noopener"
-              //   >
-              //     Veja aqui
-              //   </Link>
-              //   <Link
-              //     href={ project.pull }
-              //     target="_blank"
-              //     rel="noopener"
-              //   >
-              //     <SvgIcon>
-              //       <path d={ GitHubIcon } />
-              //     </SvgIcon>
-              //   </Link>
-              // </div>
-            ))}
-          </Carousel>
-          ;
-        </Box>
-      </Box>
+            </div>
+          ))}
+        </Carousel>
+        ;
+      </div>
     </section>
   );
 }
