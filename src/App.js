@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import About from './components/About';
 import Projects from './components/Projects';
+import Footer from './components/Footer';
 
 const App = () => (
   <main>
@@ -11,6 +12,7 @@ const App = () => (
     <Main />
     <About />
     <Projects />
+    <Footer />
   </main>
 );
 export default App;

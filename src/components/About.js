@@ -3,18 +3,22 @@ import {
   Box,
   Typography,
   Tooltip,
-  // Link,
-  // SvgIcon
 } from '@mui/material';
+
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
 import icons from '../icons/index';
 
-require('@lottiefiles/lottie-player');
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
+
+const lint = true;
 
 function About() {
   return (
     <section>
       <Box
+        id="about"
         sx={ {
           display: 'flex',
           alignItems: 'center',
@@ -27,50 +31,56 @@ function About() {
         } }
         mt={ 10 }
         mx={ 2 }
-        id="sobremim"
-        px={ 10 }
+        px={ 2 }
+        pb={ 2 }
       >
         <Box
           py={ 5 }
         >
-          <Typography
-            variant="h3"
-            gutterBottom
-            component="div"
-          >
-            Sobre mim
-          </Typography>
-          <Typography variant="h6" gutterBottom component="div">
-            Olá, me chamo Patrik Batista,
-            tenho 38 anos, sou natural de Guarulhos no estado de SP.
-            No ano passado(2020) ingressei no curso de Análise
-            e Desenvolvimento de Sistemas na FATEC-SP,
-            através desse curso descobri minha paixão por tecnologia,
-            percebi a necessidade de acelerar meu desenvolvimento,
-            foi aí que conhecia a
-            {' '}
-            <a href="https://www.betrybe.com/" target="_blank" rel="noreferrer">Trybe</a>
-            ,
-            uma escola de desenvolvimento Web focada no mercado de trabalho,
-            o curso contém 1500hs de aula
-            e nele tenho desenvolvido minhas Soft e Hard Skills.
-            O curso é dividido em 4 módulos
-            (Fundamentos, Front-End, Back-End e Ciência da Computação).
-            Atualmente estou no módulo de Back-End,
-            confesso que essa área me encanta
-            e a tenho estudado com muito entusiasmo,
-            inclusive outras linguagens que não estão no currículo do curso,
-            como por exemplo a linguagem Java(estou apaixonado por ela).
-          </Typography>
+          <ThemeProvider theme={ theme }>
+            <Typography
+              variant="h3"
+              gutterBottom
+              component="div"
+            >
+              Sobre mim
+            </Typography>
+          </ThemeProvider>
+          <ThemeProvider theme={ theme }>
+            <Typography variant="h6" gutterBottom component="div">
+              Olá, me chamo Patrik Batista,
+              tenho 38 anos, sou natural de Guarulhos no estado de SP.
+              No ano passado(2020) ingressei no curso de Análise
+              e Desenvolvimento de Sistemas na FATEC-SP,
+              através desse curso descobri minha paixão por tecnologia,
+              percebi a necessidade de acelerar meu desenvolvimento,
+              foi aí que conhecia a
+              {' '}
+              { lint && <a href="https://www.betrybe.com/" target="_blank" rel="noreferrer">Trybe</a>}
+              ,
+              uma escola de desenvolvimento Web focada no mercado de trabalho,
+              o curso contém 1500hs de aula
+              e nele tenho desenvolvido minhas Soft e Hard Skills.
+              O curso é dividido em 4 módulos
+              (Fundamentos, Front-End, Back-End e Ciência da Computação).
+              Atualmente estou no módulo de Back-End,
+              confesso que essa área me encanta
+              e a tenho estudado com muito entusiasmo,
+              inclusive outras linguagens que não estão no currículo do curso,
+              como por exemplo a linguagem Java(estou apaixonado por ela).
+            </Typography>
+          </ThemeProvider>
         </Box>
         <Box>
-          <Typography
-            variant="h3"
-            gutterBottom
-            component="div"
-          >
-            Tecnologias
-          </Typography>
+          <ThemeProvider theme={ theme }>
+            <Typography
+              variant="h3"
+              gutterBottom
+              component="div"
+            >
+              Tecnologias
+            </Typography>
+          </ThemeProvider>
           <Box
             sx={ {
               display: 'flex',

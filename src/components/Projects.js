@@ -7,13 +7,17 @@ import {
   Tooltip,
 } from '@mui/material';
 
-import GitHubIcon from '@mui/icons-material/GitHub';
-// import VisibilityIcon from '@mui/icons-material/Visibility';
-import WebIcon from '@mui/icons-material/Web';
-
 import Carousel from 'react-multi-carousel';
 
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+
+import GitHubIcon from '@mui/icons-material/GitHub';
+import WebIcon from '@mui/icons-material/Web';
+
 import projects from '../projects';
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 function Projects() {
   const responsive = {
@@ -41,10 +45,10 @@ function Projects() {
           textAlign: 'center',
           borderRadius: '2px',
           boxShadow: '0 0 5px',
-          margin: '80px 16px 0px',
-          padding: '0px 80px',
+          margin: '80px 16px 80px',
+          padding: '0px 40px 20px',
         } }
-        id="projetos"
+        id="projects"
       >
         <Box
           py={ 5 }
@@ -55,16 +59,20 @@ function Projects() {
             flexDirection: 'column',
           } }
         >
-          <Typography
-            variant="h3"
-            gutterBottom
-            component="div"
-          >
-            Projetos
-          </Typography>
-          <Typography variant="h6" gutterBottom component="div">
-            coisas do projeto
-          </Typography>
+          <ThemeProvider theme={ theme }>
+            <Typography
+              variant="h3"
+              gutterBottom
+              component="div"
+            >
+              Projetos
+            </Typography>
+          </ThemeProvider>
+          <ThemeProvider theme={ theme }>
+            <Typography variant="h6" gutterBottom component="div">
+              coisas do projeto
+            </Typography>
+          </ThemeProvider>
 
         </Box>
 
@@ -76,7 +84,7 @@ function Projects() {
           ssr // means to render carousel on server-side.
           infinite
           // autoPlay
-          // autoPlaySpeed={ 1000 }
+          // autoPlaySpeed={ 2000 }
           keyBoardControl
           customTransition="all .5"
           transitionDuration={ 500 }
@@ -85,18 +93,19 @@ function Projects() {
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
           focusOnSelect
-          // renderDotsOutside
         >
           {projects.map((project, index) => (
             <div
               key={ index }
-              style={ { height: '500px' } }
+              // style={ { height: '500px' } }
             >
-              <Typography variant="h4" gutterBottom component="div">
-                {project.name}
-              </Typography>
+              <ThemeProvider theme={ theme }>
+                <Typography variant="h4" gutterBottom component="div">
+                  {project.name}
+                </Typography>
+              </ThemeProvider>
               <div
-                style={ { height: '300px' } }
+                style={ { masxHeight: '300px' } }
               >
                 <img
                   src={ project.image }
@@ -108,11 +117,15 @@ function Projects() {
                   alt={ project.name }
                 />
               </div>
-              <Typography mt={ 2 } variant="body1" gutterBottom component="div">
-                {project.description}
-              </Typography>
-              <div>
-                <Tooltip title="Pull Request">
+              <ThemeProvider theme={ theme }>
+                <Typography mt={ 2 } variant="body1" gutterBottom component="div">
+                  {project.description}
+                </Typography>
+              </ThemeProvider>
+              <div
+                sytle={ { marginBottom: '10px' } }
+              >
+                <Tooltip title="Veja meu Pull Request">
                   <Link
                     href={ project.pull }
                     underline="none"

@@ -1,22 +1,35 @@
 import React from 'react';
 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+  MenuItem,
+  Link,
+} from '@mui/material';
 
+import MenuIcon from '@mui/icons-material/Menu';
 import headerPhoto from '../images/headerPhoto.jpeg';
 
-const pages = ['Sobre', 'Projetos', 'Contatos'];
-const settings = ['LinkedIn', 'GitHub', 'Instagram'];
+const pages = [
+  ['Inicio', '#root'],
+  ['Sobre', '#about'],
+  ['Projetos', '#projects'],
+];
+
+const settings = [
+  ['LinkedIn', 'https://www.linkedin.com/in/patrik-batista/'],
+  ['GitHub', 'https://github.com/patrikbatista'],
+  ['Instagram', 'algum'],
+  ['Email', 'mailto:pcr_batista@hotmail.com'],
+];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -61,7 +74,7 @@ const Header = () => {
           <Box sx={ { flexGrow: 1, display: { xs: 'flex', md: 'none' } } }>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="seções da página"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={ handleOpenNavMenu }
@@ -87,9 +100,9 @@ const Header = () => {
                 display: { xs: 'block', md: 'none' },
               } }
             >
-              {pages.map((page) => (
-                <MenuItem key={ page } onClick={ handleCloseNavMenu }>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map(([section, link], index) => (
+                <MenuItem key={ index } onClick={ handleCloseNavMenu }>
+                  <Link href={ link } underline="none" color="inherit">{section}</Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -103,13 +116,13 @@ const Header = () => {
             Portifólio
           </Typography>
           <Box sx={ { flexGrow: 1, display: { xs: 'none', md: 'flex' } } }>
-            {pages.map((page) => (
+            {pages.map(([section, link], index) => (
               <Button
-                key={ page }
+                key={ index }
                 onClick={ handleCloseNavMenu }
                 sx={ { my: 2, color: 'black', display: 'block' } }
               >
-                {page}
+                <Link href={ link } underline="none" color="inherit">{section}</Link>
               </Button>
             ))}
           </Box>
@@ -138,9 +151,17 @@ const Header = () => {
               open={ Boolean(anchorElUser) }
               onClose={ handleCloseUserMenu }
             >
-              {settings.map((setting) => (
-                <MenuItem key={ setting } onClick={ handleCloseNavMenu }>
-                  <Typography textAlign="center">{setting}</Typography>
+              {settings.map(([network, link], index) => (
+                <MenuItem key={ index } onClick={ handleCloseNavMenu }>
+                  <Link
+                    href={ link }
+                    target="_blank"
+                    rel="noreferrer"
+                    underline="none"
+                    color="inherit"
+                  >
+                    {network}
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -150,4 +171,5 @@ const Header = () => {
     </AppBar>
   );
 };
+
 export default Header;
