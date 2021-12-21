@@ -27,7 +27,6 @@ const pages = [
 const settings = [
   ['LinkedIn', 'https://www.linkedin.com/in/patrik-batista/'],
   ['GitHub', 'https://github.com/patrikbatista'],
-  ['Instagram', 'algum'],
   ['Email', 'mailto:pcr_batista@hotmail.com'],
 ];
 

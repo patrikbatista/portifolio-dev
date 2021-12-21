@@ -9,14 +9,12 @@ import {
 import {
   GitHub,
   Email,
-  Instagram,
   LinkedIn,
 } from '@mui/icons-material';
 
 const settings = [
   [GitHub, 'Meu GitHub', 'https://github.com/patrikbatista'],
   [LinkedIn, 'Meu LinkedIn', 'https://www.linkedin.com/in/patrik-batista/'],
-  [Instagram, 'Meu Instagram', 'algum'],
   [Email, 'pcr_batista@hotmail.com', 'mailto:pcr_batista@hotmail.com'],
 ];
 
